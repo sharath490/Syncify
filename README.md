@@ -1,2 +1,9 @@
-# Syncify
-A cross-platform music streaming app prototype inspired by Spotify, Apple Music, and YouTube Music.
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+.DS_Store
+npm-debug.log*
