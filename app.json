@@ -3,24 +3,13 @@
     "name": "Syncify",
     "slug": "syncify",
     "version": "1.0.0",
+    "scheme": "syncify",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
-    "splash": {
-      "backgroundColor": "#090d18"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#090d18"
-      }
-    },
-    "web": {
-      "bundler": "metro"
-    }
+    "splash": { "backgroundColor": "#090d18" },
+    "assetBundlePatterns": ["**/*"],
+    "ios": { "supportsTablet": true },
+    "android": { "adaptiveIcon": { "backgroundColor": "#090d18" } },
+    "web": { "bundler": "metro" }
   }
 }

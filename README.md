@@ -2,24 +2,32 @@
 
 Cross-platform music discovery prototype built with Expo, React Native, and TypeScript.
 
-## Run locally
+## Spotify catalog setup
+
+1. Create a Spotify developer app and copy its **Client ID** (never put a client secret in a mobile app).
+2. Set `EXPO_PUBLIC_SPOTIFY_CLIENT_ID` in the environment before starting Expo.
+3. Register the exact redirect URI produced by `AuthSession.makeRedirectUri({ scheme: 'syncify', path: 'spotify-auth' })` in the Spotify app settings. The app scheme is configured as `syncify` in `app.json`.
+4. Install dependencies and run `npx expo start`. For OAuth with a custom URI scheme, use an Expo development build or standalone build; Expo Go may not support the configured app redirect.
+
+Example (macOS/Linux):
 
 ```bash
-npm install
-npm run typecheck
+EXPO_PUBLIC_SPOTIFY_CLIENT_ID=your_client_id npx expo start
+```
+
+PowerShell:
+
+```powershell
+$env:EXPO_PUBLIC_SPOTIFY_CLIENT_ID="your_client_id"
 npx expo start
 ```
 
-## Current features
+## Implemented
 
-- Discover, Search, Library, and Radio tabs
-- Search by title, artist, and mood; mood-based discovery filters
-- Shared mini-player with play, pause, next-track, and end-of-track advance
-- Likes saved locally on the device with AsyncStorage
-- Real audio playback of public SoundHelix example streams through Expo AV
+- Spotify Authorization Code with PKCE (public mobile client; no client secret)
+- Spotify catalog track search in the Search tab
+- Secure token storage and refresh using Expo SecureStore
+- Spotify result links open in Spotify; catalog search is not full audio streaming
+- Existing sample catalog/player remains a separate demo experience
 
-## QA notes / limitations
-
-Audio URLs are sample streams for development and playback testing; the displayed track names are mock catalog metadata and do not describe the actual SoundHelix recordings. Network access is required. This is not a licensed commercial music catalog. Replace sample sources with authorized previews/catalog playback before release.
-
-The app has been reviewed for navigation, storage, and playback state handling, but this repository update was not executed in a local Expo/iOS/Android build environment. Validate with `npm install`, `npm run typecheck`, and a device/simulator playback check.
+Spotify playback itself is not streamed by this app. Full playback requires Spotify's supported playback integration and an eligible account/device. Catalog preview availability is not guaranteed. Follow Spotify's developer terms and brand guidelines.
